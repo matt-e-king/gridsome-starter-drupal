@@ -1,1 +1,1 @@
-# gridsome-starter-drupal
+# Default starter for Gridsome Source Drupal
