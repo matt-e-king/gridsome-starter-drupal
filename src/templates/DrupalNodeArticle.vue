@@ -9,7 +9,7 @@
       </span>
     </section>
 
-    <img :src="`${baseUrl}${article.fieldImage.url.src}`" height="200" :alt="article.fieldImage.title"/>
+    <img :src="`${baseUrl}${imgUrl}`" height="200" :alt="article.fieldImage.title"/>
 
     <p>{{ article.date }}</p>
     <p v-html="article.body.processed"></p>
@@ -22,10 +22,21 @@
       article() {
         const { drupalNodeArticle } = this.$page
 
-        console.dir(process)
-
         return drupalNodeArticle || {}
-      }
+      },
+      imgUrl() {
+        const {
+          fieldImage: {
+            uri: {
+              url: {
+                src
+              } = {}
+            } = {}
+          } = {}
+        } = this.article
+
+        return src
+      } 
     },
 
     data() {
@@ -48,7 +59,9 @@
       fieldImage {
         title,
         filename,
-        url
+        uri {
+          url
+        }
       },
       fieldTags {
         name,
