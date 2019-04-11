@@ -24,3 +24,29 @@ module.exports = {
     }
   ]
 }
+
+/**
+ * Contenta CMS Example
+ * 
+ * module.exports = {
+ *   chainWebpack: config => {
+ *     config
+ *       .plugin('env')
+ *       .use(require.resolve('webpack/lib/EnvironmentPlugin'), ['APP_BASE_URL'])
+ *   },
+ *   plugins: [
+ *     {
+ *       use: '@gridsome/source-drupal',
+ *       options: {
+ *         baseUrl: process.env.APP_BASE_URL,
+ *         apiBase: 'api',
+ *         exclude: [ ...defaultExcludes ],
+ *         routes: {
+ *           'article': '/articles/:slug',
+ *           'recipes': '/recipes/:title'
+ *         }
+ *       }
+ *     }
+ *   ]
+ * }
+ */
