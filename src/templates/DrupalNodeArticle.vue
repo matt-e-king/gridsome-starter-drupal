@@ -28,14 +28,12 @@
         const {
           fieldImage: {
             uri: {
-              url: {
-                src
-              } = {}
+              url
             } = {}
           } = {}
         } = this.article
 
-        return src
+        return url
       } 
     },
 
