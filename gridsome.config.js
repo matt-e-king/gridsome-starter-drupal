@@ -38,7 +38,7 @@ module.exports = {
  *     {
  *       use: '@gridsome/source-drupal',
  *       options: {
- *         baseUrl: process.env.APP_BASE_URL,
+ *         baseUrl: 'https://live-contentacms.pantheonsite.io',
  *         apiBase: 'api',
  *         exclude: [ ...defaultExcludes ],
  *         routes: {
