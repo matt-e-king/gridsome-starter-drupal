@@ -10,6 +10,8 @@ module.exports = {
       .plugin('env')
       .use(require.resolve('webpack/lib/EnvironmentPlugin'), ['APP_BASE_URL'])
   },
+  siteName: 'Gridsome',
+  siteDescription: 'A Drupal starter for Gridsome',
   plugins: [
     {
       use: '@gridsome/source-drupal',
@@ -29,11 +31,8 @@ module.exports = {
  * Contenta CMS Example
  * 
  * module.exports = {
- *   chainWebpack: config => {
- *     config
- *       .plugin('env')
- *       .use(require.resolve('webpack/lib/EnvironmentPlugin'), ['APP_BASE_URL'])
- *   },
+ *   siteName: 'Gridsome',
+ *   siteDescription: 'A Drupal (Contenta CMS) starter for Gridsome',
  *   plugins: [
  *     {
  *       use: '@gridsome/source-drupal',
