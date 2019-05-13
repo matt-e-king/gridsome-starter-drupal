@@ -32,12 +32,11 @@
         return this.articles.filter((article) => {
           let {
             node: {
-              fieldTags = []
+              field_tags = []
             } = {}
           } = article
 
-          const allTags = fieldTags.map(tagObj => tagObj.slug)
-
+          const allTags = field_tags.map(tagObj => tagObj.name)
           return allTags.includes(this.getTagSlug)
         })
       }
@@ -53,8 +52,8 @@
           id,
           title,
           path,
-          fieldTags {
-            slug,
+          field_tags {
+            id,
             name
           }
         }
