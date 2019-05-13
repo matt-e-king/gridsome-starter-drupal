@@ -2,10 +2,10 @@
   <Layout>
     <h1>Tag Page</h1>
 
-    <div>All articles tagged by <strong><em>{{ getTagSlug }}</em></strong></div>
+    <div>All articles tagged by <strong><em>{{ getTagName }}</em></strong></div>
 
     <ul>
-      <li v-for="{ node } in getArticlesByTagSlug" :key="node.title">
+      <li v-for="{ node } in getArticlesByTagName" :key="node.title">
         <a :href="node.path">{{ node.title }}</a>
       </li>
     </ul>
@@ -15,9 +15,9 @@
 <script>
   export default {
     computed: {
-      getTagSlug() {
-        const { params: { slug } = {} } = this.$route
-        return slug
+      getTagName() {
+        const { params: { name } = {} } = this.$route
+        return name
       },
       articles() {
         const { 
@@ -28,17 +28,16 @@
 
         return edges || []
       },
-      getArticlesByTagSlug() {
+      getArticlesByTagName() {
         return this.articles.filter((article) => {
           let {
             node: {
-              fieldTags = []
+              field_tags = []
             } = {}
           } = article
 
-          const allTags = fieldTags.map(tagObj => tagObj.slug)
-
-          return allTags.includes(this.getTagSlug)
+          const allTags = field_tags.map(tagObj => tagObj.name)
+          return allTags.includes(this.getTagName)
         })
       }
     }
@@ -53,8 +52,8 @@
           id,
           title,
           path,
-          fieldTags {
-            slug,
+          field_tags {
+            id,
             name
           }
         }

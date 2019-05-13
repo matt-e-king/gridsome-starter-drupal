@@ -4,12 +4,12 @@
 
     <section class="article__tags">
       Tags:
-      <span v-for="tag in article.fieldTags" :key="tag.name">
+      <span v-for="tag in article.field_tags" :key="tag.name">
         <a :href="tag.path">{{ tag.name }}</a>
       </span>
     </section>
 
-    <img :src="`${baseUrl}${imgUrl}`" height="200" :alt="article.fieldImage.title"/>
+    <img :src="`${baseUrl}${imgUrl}`" height="200" :alt="article.field_image.filename"/>
 
     <p>{{ article.date }}</p>
     <p v-html="article.body.processed"></p>
@@ -26,7 +26,7 @@
       },
       imgUrl() {
         const {
-          fieldImage: {
+          field_image: {
             uri: {
               url
             } = {}
@@ -53,17 +53,16 @@
       date,
       body {
         processed
+      }
+      field_tags {
+        name,
+        path
       },
-      fieldImage {
-        title,
+      field_image {
         filename,
         uri {
           url
         }
-      },
-      fieldTags {
-        name,
-        path
       }
     }
   }
