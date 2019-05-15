@@ -33,8 +33,8 @@ module.exports = {
         baseUrl: process.env.APP_BASE_URL, // use dotenv with .env or replace value with your Drupal url
         exclude: [ ...defaultExcludes /* include your own excludes here */],
         routes: {
-          'node--article': '/articles/:slug',
-          'taxonomy_term--tags': '/tags/:name'
+          'node--article': '/articles/:title',
+          'taxonomy_term--tags': '/tags/:title'
         }
       }
     }
@@ -61,8 +61,8 @@ module.exports = {
         baseUrl: 'https://somedrupalsite.pantheon.io',
         exclude: [ ...defaultExcludes /* include your own excludes here */],
         routes: {
-          'node--article': '/articles/:slug',
-          'taxonomy_term--tags': '/tags/:name'
+          'node--article': '/articles/:title',
+          'taxonomy_term--tags': '/tags/:title'
         }
       }
     }
@@ -90,7 +90,7 @@ module.exports = {
         apiBase: 'api',
         exclude: [ ...defaultExcludes ],
         routes: {
-          'article': '/articles/:slug',
+          'article': '/articles/:title',
           'recipes': '/recipes/:title'
         }
       }
