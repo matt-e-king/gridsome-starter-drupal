@@ -20,7 +20,7 @@ module.exports = {
         exclude: [ ...defaultExcludes /* include your own excludes here */],
         routes: {
           'node--article': '/articles/:title',
-          'taxonomy_term--tags': '/tags/:title'
+          'taxonomy_term--tags': '/tags/:name'
         }
       }
     }
@@ -42,7 +42,7 @@ module.exports = {
  *         exclude: [ ...defaultExcludes ],
  *         routes: {
  *           'article': '/articles/:title',
- *           'recipes': '/recipes/:title'
+ *           'recipes': '/recipes/:name'
  *         }
  *       }
  *     }
