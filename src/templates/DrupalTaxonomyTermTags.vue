@@ -36,7 +36,16 @@
             } = {}
           } = article
 
-          const allTags = field_tags.map(tagObj => tagObj.name)
+          const allTags = field_tags.map(tag => {
+            const {
+              node: {
+                name
+              } = {}
+            } = tag
+
+            return name
+          })
+
           return allTags.includes(this.getTagName)
         })
       }
@@ -53,8 +62,10 @@
           title,
           path,
           field_tags {
-            id,
-            name
+            node {
+              id,
+              name
+            }
           }
         }
       }

@@ -4,12 +4,12 @@
 
     <section class="article__tags">
       Tags:
-      <span v-for="tag in article.field_tags" :key="tag.name">
+      <span v-for="tag in tags" :key="tag.name">
         <a :href="tag.path">{{ tag.name }}</a>
       </span>
     </section>
 
-    <img :src="`${baseUrl}${imgUrl}`" height="200" :alt="article.field_image.filename"/>
+    <img :src="`${baseUrl}${imgUrl}`" height="200" :alt="imgMeta.alt" :title="imgMeta.title"/>
 
     <p>{{ article.date }}</p>
     <p v-html="article.body.processed"></p>
@@ -24,12 +24,30 @@
 
         return drupalNodeArticle || {}
       },
+      tags() {
+        const {
+          field_tags = []
+        } = this.article
+
+        return field_tags.map(tag => tag.node)
+      },
+      imgMeta() {
+        const {
+          field_image: {
+            meta
+          } = {}
+        } = this.article
+
+        return meta
+      },
       imgUrl() {
         const {
           field_image: {
-            uri: {
-              url
-            } = {}
+            node: {
+              uri: {
+                url
+              } = {}
+            }
           } = {}
         } = this.article
 
@@ -55,13 +73,21 @@
         processed
       }
       field_tags {
-        name,
-        path
+        node {
+          name,
+          path
+        }
       },
       field_image {
-        filename,
-        uri {
-          url
+        node {
+          filename,
+          uri {
+            url
+          }
+        },
+        meta {
+          alt,
+          title
         }
       }
     }
